@@ -1,0 +1,20 @@
+1. I have installed the tailwind css (You can get it from the website, framework guide)
+2. daisyUI (tailwind related website )
+3. react slick slider (go to documentation for installing)
+4. to use routers we have to install it ---> npm i react-router-dom
+5. we have to use BrowserRoutes in main.jsx
+6. for input error we use react-hook-form (Search in the website)
+
+backend
+
+1. npm init
+2. npm install express
+3. npm install nodemon
+4. .env for the safe info
+5. npm install dotenv --> to run .env file and we have to import it
+6. in package.json write type= module so that we can use import from
+7. npm install mongodb
+
+1.To link frontend and backend we use the library called axios
+npm i axios
+2.npm i cors --> for the cors error 3. to encrypt the passwrod ---> npm i bcryptjs 4. for best alert we can toast i'h not used search in the website for more detail

@@ -1,0 +1,18 @@
+/* Header.css */
+.header {
+    margin-top: 100px;
+    background: url('/header_img.png') no-repeat center center;
+    background-size: cover;
+    /* This already covers the header */
+    color: white;
+    padding: 2rem;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+}
+
+/* Optional: Ensure the inner content does not exceed the header */
+.header div {
+    animation: fadeIn 2s;
+}

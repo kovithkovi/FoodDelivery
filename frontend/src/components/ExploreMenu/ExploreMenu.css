@@ -1,0 +1,15 @@
+.menu {
+    width: 100px;
+    height: 100px;
+    /* Fixed height */
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.image-container img {
+    min-width: 150px;
+    /* Set a minimum width for the image */
+    max-width: 100%;
+    /* Ensure the image doesn’t exceed container width */
+    flex-shrink: 0;
+}
