@@ -6,6 +6,7 @@
 6. for input error we use react-hook-form (Search in the website)
 
 backend
+npm install express mongoose jsonwebtoken bcrypt cors dotenv body-parser multer stripe validator nodemom
 
 1. npm init
 2. npm install express

@@ -3,7 +3,10 @@ import "./Header.css";
 
 function Header() {
   return (
-    <div className="header max-w-screen-xl container mx-auto flex flex-col items-start justify-center text-left px-4 relative">
+    <div
+      className="header max-w-screen-xl container mx-auto flex flex-col items-start justify-center text-left px-4 relative"
+      id="home"
+    >
       <div className="md:w-2/3 mt-20 px-10">
         <p className="md:text-6xl md:mb-4 md:ml-20 text-5xl py-6">
           Order your <br />

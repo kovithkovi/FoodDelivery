@@ -10,4 +10,10 @@ export default {
     },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      "light", // Use DaisyUI's built-in light theme
+      // You can also create a custom theme if needed
+    ],
+  },
 };

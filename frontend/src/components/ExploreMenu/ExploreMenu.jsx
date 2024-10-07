@@ -2,7 +2,10 @@ import React from "react";
 import { menu_list } from "../../assets/assets.js";
 function ExploreMenu({ category, setCategory }) {
   return (
-    <div className="max-w-screen-xl container mx-auto px-4 py-8 -mt-30 relative">
+    <div
+      className="max-w-screen-xl container mx-auto px-4 py-4 relative"
+      id="menu"
+    >
       <h1 className="text-3xl mb-4">Explore our menu</h1>
       <p className="mb-8 md:w-2/3 w-full">
         Choose from a diverse menu featuring a delectable array of dishes. Our

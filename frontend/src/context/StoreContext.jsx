@@ -1,24 +1,28 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useCallback } from "react";
 import { food_list } from "../assets/assets";
+
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItem, setCartItem] = useState({});
 
-  const addToCart = (itemId) => {
+  const addToCart = useCallback((itemId) => {
     console.log(itemId);
-    if (!cartItem[itemId]) {
-      // Fix: changed id to itemId
-      console.log("item not in cart", itemId);
-      setCartItem({ ...cartItem, [itemId]: 1 });
-    } else {
-      setCartItem({ ...cartItem, [itemId]: (cartItem[itemId] || 0) + 1 }); // Fix: changed item.Id to itemId
-    }
-  };
+    setCartItem((prev) => ({
+      ...prev,
+      [itemId]: (prev[itemId] || 0) + 1,
+    }));
+  }, []);
 
-  const removeFromCart = (itemId) => {
-    setCartItem((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-  };
+  const removeFromCart = useCallback((itemId) => {
+    setCartItem((prev) => {
+      if (prev[itemId] <= 1) {
+        const { [itemId]: _, ...rest } = prev; // Remove item if count is 1 or less
+        return rest;
+      }
+      return { ...prev, [itemId]: prev[itemId] - 1 };
+    });
+  }, []);
 
   const handleCartItem = () => {
     const itemCount = Object.values(cartItem).reduce(
@@ -29,6 +33,13 @@ const StoreContextProvider = (props) => {
       hasItems: itemCount > 0,
       itemCount,
     };
+  };
+
+  const getTotalCartAmount = () => {
+    return Object.keys(cartItem).reduce((totalAmount, itemId) => {
+      const item = food_list.find((item) => item._id === itemId);
+      return totalAmount + (item ? item.price * cartItem[itemId] : 0);
+    }, 0);
   };
 
   useEffect(() => {
@@ -42,7 +53,7 @@ const StoreContextProvider = (props) => {
     removeFromCart,
     setCartItem,
     handleCartItem,
-    cartItem, // Fix: added cartItem to contextValue for usage in other components.
+    getTotalCartAmount,
   };
 
   return (

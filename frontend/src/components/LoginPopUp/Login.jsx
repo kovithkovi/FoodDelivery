@@ -1,10 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 const LoginPopUp = () => {
+  const [currState, setCurrentState] = useState("login");
+  console.log(currState);
+
   return (
     <>
       <button
-        className="btn border-1 rounded-3xl px-5 md:text-lg bg-white text-md md:py-1 py-1 hover:cursor-pointer border-black hover:bg-[tomato] hover:text-white"
+        className="btn border-1 rounded-3xl px-5 md:text-lg bg-white text-md md:py-1 py-1 hover:cursor-pointer border-black hover:bg-[tomato] hover:text-white relative"
         onClick={() => document.getElementById("my_modal_3").showModal()}
       >
         Sign In
@@ -16,7 +19,27 @@ const LoginPopUp = () => {
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
-            <h3 className="font-bold text-lg">Login</h3>
+            <h3 className="font-bold text-lg">
+              {currState === "login" ? "Login" : "Sign Up"}
+            </h3>
+            {currState === "signup" && (
+              <div className="text-left mt-4 space-y-3 ml-4">
+                <label htmlFor="name-input" className="hover:cursor-pointer">
+                  Name
+                </label>
+                <br />
+                <input
+                  type="text"
+                  id="name-input"
+                  placeholder="Enter your name..."
+                  className="w-full px-3 border rounded-md outline-none border-2 py-2"
+                  // {...register("email", { required: true })}
+                />
+                {/* {errors.email && (
+                <span className="text-red-500">This field is required</span>
+              )} */}
+              </div>
+            )}
             {/* Email */}
             <div className="text-left mt-4 space-y-3 ml-4">
               <label htmlFor="email-input" className="hover:cursor-pointer">
@@ -53,17 +76,29 @@ const LoginPopUp = () => {
             </div>
             <div className="flex justify-around mt-5">
               <button className="btn border-1 border-black rounded-full py-1 px-7 hover:bg-[tomato] hover:text-white">
-                Login
+                {currState === "login" ? "Login" : "Create Account"}
               </button>
-              <p className="text-l my-auto">
-                Not registered?{" "}
-                <a
-                  href="/signup"
-                  className="underline text-blue-500 cursor-pointer"
-                >
-                  Signup
-                </a>
-              </p>
+              {currState === "login" ? (
+                <p className="text-l my-auto">
+                  Not registered?{" "}
+                  <a
+                    className="underline cursor-pointer text-[tomato] cursor-pointer"
+                    onClick={() => setCurrentState("signup")}
+                  >
+                    Signup
+                  </a>
+                </p>
+              ) : (
+                <p className="text-l my-auto">
+                  Already Have Accound?{" "}
+                  <a
+                    className="underline cursor-pointer text-[tomato] cursor-pointer"
+                    onClick={() => setCurrentState("login")}
+                  >
+                    Login
+                  </a>
+                </p>
+              )}
             </div>
           </form>
         </div>

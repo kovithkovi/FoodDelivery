@@ -3,7 +3,7 @@ import { assets } from "../../assets/assets";
 
 function Footer() {
   return (
-    <div className="bg-[#323232] text-white">
+    <div className="bg-[#323232] text-white" id="contact-us">
       <div className="md:flex max-w-screen-xl container mx-auto px-4 py-10 items-top">
         <div className="md:w-3/5 py-5">
           <img src={assets.logo} alt="" />
